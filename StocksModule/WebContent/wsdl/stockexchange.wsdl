@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="StockExchangeService" targetNamespace="http://server.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://server.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://server.com/" schemaLocation="stockexchange_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="updateStockResponse">
+    <wsdl:part name="parameters" element="tns:updateStockResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStockResponse">
+    <wsdl:part name="parameters" element="tns:removeStockResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStockPrice">
+    <wsdl:part name="parameters" element="tns:getStockPrice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStockPriceResponse">
+    <wsdl:part name="parameters" element="tns:getStockPriceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStock">
+    <wsdl:part name="parameters" element="tns:removeStock">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStock">
+    <wsdl:part name="parameters" element="tns:updateStock">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="StockX">
+    <wsdl:operation name="getStockPrice">
+      <wsdl:input name="getStockPrice" message="tns:getStockPrice">
+    </wsdl:input>
+      <wsdl:output name="getStockPriceResponse" message="tns:getStockPriceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStock">
+      <wsdl:input name="removeStock" message="tns:removeStock">
+    </wsdl:input>
+      <wsdl:output name="removeStockResponse" message="tns:removeStockResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStock">
+      <wsdl:input name="updateStock" message="tns:updateStock">
+    </wsdl:input>
+      <wsdl:output name="updateStockResponse" message="tns:updateStockResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StockExchangeServiceSoapBinding" type="tns:StockX">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getStockPrice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStockPrice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStockPriceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStock">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeStock">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeStockResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStock">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateStock">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStockResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StockExchangeService">
+    <wsdl:port name="StockExchangePort" binding="tns:StockExchangeServiceSoapBinding">
+      <soap:address location="http://localhost:8080/StocksModule/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

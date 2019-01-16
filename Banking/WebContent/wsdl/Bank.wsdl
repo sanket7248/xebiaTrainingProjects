@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://bank.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://bank.com" xmlns:intf="http://bank.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://bank.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="readUserFromAccounts">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="readUserFromAccountsResponse">
+    <complexType>
+     <sequence>
+      <element name="readUserFromAccountsReturn" type="impl:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Address">
+    <sequence>
+     <element name="areaCode" type="xsd:double"/>
+     <element name="location" nillable="true" type="xsd:string"/>
+     <element name="num" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="User">
+    <sequence>
+     <element name="address" nillable="true" type="impl:Address"/>
+     <element name="income" type="xsd:double"/>
+     <element name="secCode" nillable="true" type="xsd:string"/>
+     <element name="userId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="getLocationForUser">
+    <complexType>
+     <sequence>
+      <element name="user" type="impl:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLocationForUserResponse">
+    <complexType>
+     <sequence>
+      <element name="getLocationForUserReturn" type="impl:Address"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getLocationForUserResponse">
+
+      <wsdl:part element="impl:getLocationForUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="readUserFromAccountsResponse">
+
+      <wsdl:part element="impl:readUserFromAccountsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationForUserRequest">
+
+      <wsdl:part element="impl:getLocationForUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="readUserFromAccountsRequest">
+
+      <wsdl:part element="impl:readUserFromAccounts" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Bank">
+
+      <wsdl:operation name="readUserFromAccounts">
+
+         <wsdl:input message="impl:readUserFromAccountsRequest" name="readUserFromAccountsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:readUserFromAccountsResponse" name="readUserFromAccountsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLocationForUser">
+
+         <wsdl:input message="impl:getLocationForUserRequest" name="getLocationForUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getLocationForUserResponse" name="getLocationForUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BankSoapBinding" type="impl:Bank">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="readUserFromAccounts">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="readUserFromAccountsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="readUserFromAccountsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLocationForUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLocationForUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLocationForUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BankService">
+
+      <wsdl:port binding="impl:BankSoapBinding" name="Bank">
+
+         <wsdlsoap:address location="http://localhost:8082/Banking/services/Bank"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
