@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="CXF_DelayedService" path="/CXF_DelayedService" reloadable="true" source="org.eclipse.jst.jee.server:CXF_DelayedService"/><Context docBase="CXF_AsyncService" path="/CXF_AsyncService" reloadable="true" source="org.eclipse.jst.jee.server:CXF_AsyncService"/><Context docBase="CXF-Async-Service-Client" path="/CXF-Async-Service-Client" reloadable="true" source="org.eclipse.jst.jee.server:CXF-Async-Service-Client"/></Host>
+      <Context docBase="Servlet-REST-Service" path="/Servlet-REST-Service" reloadable="true" source="org.eclipse.jst.jee.server:Servlet-REST-Service"/><Context docBase="CXF-REST-Service" path="/CXF-REST-Service" reloadable="true" source="org.eclipse.jst.jee.server:CXF-REST-Service"/></Host>
     </Engine>
   </Service>
 </Server>
